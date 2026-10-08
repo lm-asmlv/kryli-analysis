@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: kryli_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: kryli
+      POSTGRES_PASSWORD: kryli_pass
+      POSTGRES_DB: kryli
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kryli -d kryli"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
