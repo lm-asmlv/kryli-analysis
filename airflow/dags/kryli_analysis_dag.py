@@ -11,7 +11,7 @@ from airflow import DAG
 from airflow.operators.bash import BashOperator
 
 # --- параметры подключения к рабочему Postgres (внут. Docker-сеть) ---
-PG = "postgresql://kryli:kryli@postgres:5432/kryli"
+PG = "postgresql://kryli:kryli@postgres:5432/kryli_pass"
 PSQL = f"psql {PG}"
 
 default_args = {
